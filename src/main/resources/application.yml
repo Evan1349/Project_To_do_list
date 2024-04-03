@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: Springboot-ToDoList
+  h2:
+    console:
+      enabled: true
+  datasource:
+    url: jdbc:h2:file:./testdb
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    
