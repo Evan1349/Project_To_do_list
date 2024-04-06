@@ -1,6 +1,10 @@
 package com.example.demo.entity;
 
 
+
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.SQLRestriction;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -15,6 +19,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
@@ -23,7 +28,9 @@ import lombok.ToString;
 @ToString
 @Entity
 @Table(name = "T_TASK")
-public class Task {
+@SQLDelete(sql= " UPDATE T_TASK SET enabled = false where task_id = ?")
+@SQLRestriction(value = "enabled = true")
+public class Task extends Base_Entity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -33,7 +40,7 @@ public class Task {
 	@JoinColumn(name = "userId")
 	private User user;
 	
-	private String task;
+	private String taskName;
 	private boolean completed;
 	private long time;
 }

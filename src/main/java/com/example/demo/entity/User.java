@@ -2,6 +2,9 @@ package com.example.demo.entity;
 
 import java.util.List;
 
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.SQLRestriction;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -24,7 +27,9 @@ import lombok.ToString;
 @ToString
 @Entity
 @Table(name = "T_USER")
-public class User {
+@SQLDelete(sql= " UPDATE T_USER SET enabled = false where user_id = ?")
+@SQLRestriction(value = "enabled = true")
+public class User extends Base_Entity {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -33,7 +38,7 @@ public class User {
 	@OneToMany(mappedBy = "user")
 	private List<Task> tasks;
 	
-	private String username;
+	private String userName;
 	private String password;
 	@Column(unique = true)
 	private String email;
