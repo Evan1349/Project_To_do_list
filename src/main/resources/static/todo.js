@@ -1,13 +1,16 @@
 const newTodoInput = document.getElementById('newTodo');
 const addTodoButton = document.getElementById('addTodo');
 const todoList = document.getElementById('todoList');
+const titleElement = document.querySelector("h1");
+const urlParams = new URLSearchParams(window.location.search);
+const userName = urlParams.get('username');
 
 // API 端點
 const apiUrl = 'http://localhost:8080/api/tasks';
 
 // 取得所有 Todo
 function getTodos() {
-  fetch(apiUrl + '/allTasks')
+  fetch(apiUrl + `/byUser/${userName}`)
     .then(response => response.json())
     .then(data => {
       renderTodos(data);
@@ -47,7 +50,6 @@ function renderTodos(todos) {
 
     li.appendChild(checkbox);
     li.appendChild(todoText);
-    li.appendChild(editButton);
     li.appendChild(deleteButton);
     todoList.appendChild(li);
   });
@@ -55,15 +57,15 @@ function renderTodos(todos) {
 
 // 新增 Todo
 function addTodo() {
-  const title = newTodoInput.value.trim();
-  if (title) {
+  const taskName = newTodoInput.value.trim();
+  if (taskName) {
     
     fetch(apiUrl+`/createTask/${userName}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ title, completed: false })
+      body: JSON.stringify({ taskName, completed: false })
     })
       .then(response => response.json())
       .then(data => {
@@ -100,8 +102,14 @@ function deleteTodo(taskId) {
   fetch(apiUrl+`/deleteTask/${taskId}`, {
     method: 'DELETE'
   })
-    .then(response => response.json())
-    .then(function(data){
+    .then(response => {
+      if (response.status === 204){
+		return Promise.resolve([]);
+	  }else{
+		return response.json();
+	  }
+    })
+    .then(data => {
       getTodos();
     })
     .catch(error => console.error('Error:', error));
@@ -109,5 +117,9 @@ function deleteTodo(taskId) {
 
 // 初始化
 getTodos();
+
+if (userName) {
+  titleElement.textContent += `-  ${userName}'s Todo List  - `;
+}
 
 addTodoButton.addEventListener('click', addTodo);

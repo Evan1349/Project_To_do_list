@@ -7,29 +7,51 @@ body {
   max-width: 500px;
   margin: 0 auto;
   padding: 20px;
-  background-color: #fff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: rgb(255, 255, 128);
+  box-shadow: 0 0 10px rgb(255, 255, 255);
 }
-
 h1 {
+    font-stretch: extra-expanded;
+    text-shadow: 1.5px 1.5px 1.5px rgba(0, 0, 0, 0.4);
+  font-style: italic;
   text-align: center;
 }
 
 input[type="text"] {
-  width: 70%;
+	border: 0;
+    background: none;
+    display: inline-block;
+    margin: 20px auto;
+    border: 2px solid #3498db;
+    margin: 20px 10px;
+    outline: none;
+    color: black;
+    border-radius: 24px;
+    transition: 0.25s;
+  width: 60%;
   padding: 10px;
   font-size: 16px;
 }
-
-button {
-  padding: 10px 20px;
-  font-size: 16px;
-  background-color: #4CAF50;
-  color: #fff;
-  border: none;
-  cursor: pointer;
+input[type="text"]:focus {
+  border-color: rgb(128, 0, 128);
+  width: 65%; 
 }
 
+button {
+  font-style: italic;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: rgb(0, 128, 64);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-left: auto;
+}
+button:hover {
+  background-color: rgb(255, 255, 255); 
+  color: rgb(0, 100, 50); 
+}
 ul {
   list-style-type: none;
   padding: 0;
@@ -54,4 +76,5 @@ li input[type="checkbox"] {
 li button {
   margin-left: auto;
   background-color: #f44336;
+  margin-right: 10px;
 }

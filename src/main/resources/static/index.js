@@ -24,7 +24,7 @@ loginForm.addEventListener('submit', async (e) => {
     });
 
     if (response.ok) {
-      const userData = await response.text(); // 解析返回的 JSON 数据
+      const userData = await response.json(); // 解析返回的 JSON 数据
       const userName = userData.userName; // 获取用户名
 
       // 重定向到 todo.html 页面，并附带用户名作为查询参数

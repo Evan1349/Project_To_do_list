@@ -41,6 +41,7 @@ public class Task extends Base_Entity {
 	private User user;
 	
 	private String taskName;
-	private boolean completed;
+	@Builder.Default
+	private boolean completed = false ;
 	
 }

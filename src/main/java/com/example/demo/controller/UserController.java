@@ -73,9 +73,9 @@ public class UserController {
 		// Login
 	@Operation(summary = "login", description = "login using username and password")
 	@PostMapping("/login")
-	public ResponseEntity<String> login(@RequestBody Auth auth) {
+	public ResponseEntity<User> login(@RequestBody Auth auth) {
 		if (userService.login(auth)) {
-			return ResponseEntity.ok("Login successful");
+			return ResponseEntity.ok(userRepository.findByUserName(auth.getUsername()));
 		} else 
 		{
 			return ResponseEntity.notFound().build();

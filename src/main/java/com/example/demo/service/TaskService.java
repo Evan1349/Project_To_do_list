@@ -63,7 +63,7 @@ public class TaskService {
 			return taskRepository.findByTaskNameContainingIgnoreCase(taskName);
 
 		}		
-		// Find tasks by userName
+		// Find tasks by userId
 	    public List<Task> findTasksByUsername(String username) {
 	        User user = userRepository.findByUserName(username);
 	        return user.getTasks();

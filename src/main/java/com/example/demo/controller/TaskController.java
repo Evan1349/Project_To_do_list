@@ -41,8 +41,9 @@ public class TaskController {
 	//Create Task
 	@Operation(summary = "create", description = "created a task by user's name")
 	@PostMapping("/createTask/{userName}")
-	public void createTask(@PathVariable("userName") String username, @RequestBody Task task) {
-		taskService.createTask(username, task);
+	public Task createTask(@PathVariable("userName") String username, @RequestBody Task task) {
+		return taskService.createTask(username, task);
+		 
 	}
 	//Read Tasks
 	@Operation(summary = "find all tasks")
