@@ -5,6 +5,8 @@ import java.util.List;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.SQLRestriction;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -35,6 +37,7 @@ public class User extends Base_Entity {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long userId;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "user")
 	private List<Task> tasks;
 	

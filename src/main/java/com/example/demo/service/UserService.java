@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.demo.entity.User;
 import com.example.demo.repository.UserRepository;
+import com.example.demo.vo.Auth;
 
 import jakarta.transaction.Transactional;
 
@@ -55,5 +56,15 @@ public class UserService {
 		user.setPassword(NewPassword);;
 		User updateduser = userRepository.save(user); 
 		return updateduser;
+	}
+	//Login
+	public boolean login(Auth auth) {
+		User user = userRepository.findByUserName(auth.getUsername());
+		if (user == null)
+			return false;
+		if (user.getPassword().equals(auth.getPassword()))
+			return true;
+		else
+			return false;
 	}
 }

@@ -41,8 +41,8 @@ class SpringbootToDoListApplicationTests {
 	@Transactional
 	@Rollback(false)
 	void contextLoads1() {
-		Task task1 = Task.builder().taskName("good morning").time(700).build();
-//		Task task2 = Task.builder().taskName("good night").time(2100).build();
+		Task task1 = Task.builder().taskName("good morning").build();
+//		Task task2 = Task.builder().taskName("good night").build();
 		taskService.createTask("Franni", task1);
 	}
 	//TaskCompleted

@@ -42,5 +42,5 @@ public class Task extends Base_Entity {
 	
 	private String taskName;
 	private boolean completed;
-	private long time;
+	
 }

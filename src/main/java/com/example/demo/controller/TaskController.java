@@ -24,7 +24,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 
 
 @RestController
-@RequestMapping("/todolist/Tasks")
+@RequestMapping("/api/tasks")
 @Tag(name = "Task Controller", description = "API related to Tasks")
 public class TaskController {
 	
@@ -40,8 +40,8 @@ public class TaskController {
 	//Task
 	//Create Task
 	@Operation(summary = "create", description = "created a task by user's name")
-	@PostMapping("/createTask/{username}")
-	public void createTask(@PathVariable String username, @RequestBody Task task) {
+	@PostMapping("/createTask/{userName}")
+	public void createTask(@PathVariable("userName") String username, @RequestBody Task task) {
 		taskService.createTask(username, task);
 	}
 	//Read Tasks
@@ -72,5 +72,14 @@ public class TaskController {
 		if(tasks == null)
 			return ResponseEntity.notFound().build();
 		return ResponseEntity.ok(tasks);
+	}	
+	// Get Tasks by UserName
+	@Operation(summary = "get tasks by username", description = "Get all tasks of a user by username")
+	@GetMapping("/byUser/{userName}")
+	public ResponseEntity<List<Task>> getTasksByUser(@PathVariable("userName") String username) {
+	    List<Task> tasks = taskService.findTasksByUsername(username);
+	    if (tasks == null)
+	        return ResponseEntity.notFound().build();
+	    return ResponseEntity.ok(tasks);
 	}
 }

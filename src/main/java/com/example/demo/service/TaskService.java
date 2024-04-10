@@ -44,11 +44,6 @@ public class TaskService {
 		public void updateTaskName(long taskId, String newTaskName) {
 			taskRepository.findByTaskId(taskId).setTaskName(newTaskName);
 		}
-		//UpdateTime
-		@Transactional
-		public void updateTime(long taskId, long newtime) {
-			taskRepository.findByTaskId(taskId).setTime(newtime);
-		}
 		//Completed
 		@Transactional
 		public void isCompleted(long taskId) {
@@ -68,4 +63,9 @@ public class TaskService {
 			return taskRepository.findByTaskNameContainingIgnoreCase(taskName);
 
 		}		
+		// Find tasks by userName
+	    public List<Task> findTasksByUsername(String username) {
+	        User user = userRepository.findByUserName(username);
+	        return user.getTasks();
+	    }
 }
