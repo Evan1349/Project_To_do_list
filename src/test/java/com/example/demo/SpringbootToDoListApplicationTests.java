@@ -33,7 +33,7 @@ class SpringbootToDoListApplicationTests {
 	@Transactional
 	@Rollback(false)
 	void contextLoads() {
-		User user1 = User.builder().userId(1).userName("Evan").password("evan123").tasks(null).email("evan@gmail.com").build();
+		User user1 = User.builder().userId(1).userName("Kevin").password("java").tasks(null).email("springboot@gmail.com").build();
 		userService.createUser(user1);
 	}
 		//createTask

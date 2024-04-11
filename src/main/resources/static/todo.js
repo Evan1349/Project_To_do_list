@@ -35,13 +35,13 @@ function renderTodos(todos) {
 
     const todoText = document.createElement('span');
     todoText.textContent = todo.taskName;
-
+/*
     const editButton = document.createElement('button');
     editButton.textContent = 'Edit';
     editButton.addEventListener('click', () => {
       editTodo(todo.taskId);
     });
-
+*/
     const deleteButton = document.createElement('button');
     deleteButton.textContent = 'Delete';
     deleteButton.addEventListener('click', () => {
