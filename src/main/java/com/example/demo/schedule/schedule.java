@@ -13,7 +13,7 @@ public class schedule {
 	@Autowired
 	private MailService mailService;
 	
-	@Scheduled(cron = " 0 0 18 * * ? ") //每晚6點寄Email明日排程
+	@Scheduled(cron = " 0 0 9 * * ? ") //我設定早上9點寄Email明日排程
 	public void task() {
 		mailService.toGetEveryUsersTasks();
 	}

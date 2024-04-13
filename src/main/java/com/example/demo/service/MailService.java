@@ -52,15 +52,17 @@ public class MailService {
 	    });
 	}
 	
+
+	
 	public void sendMail(String to, String username, List<Task> tasks) throws MessagingException {
 		MimeMessage mm = mailSender.createMimeMessage();
 		MimeMessageHelper mmh = new MimeMessageHelper(mm);
 		
 		//建立信件內容
 		StringBuilder content = new StringBuilder();
-	    content.append("Hi ").append(username).append(", your today's works").append("\n\n");
-	    for (Task task : tasks) {
-	        content.append(task.getTaskName()).append("\n");
+		content.append("Hi ").append(username).append(", your today's works").append("<br><br>");
+		for (Task task : tasks) {
+		    content.append(task.getTaskName()).append("<br>");
 	    }
 		
 		
