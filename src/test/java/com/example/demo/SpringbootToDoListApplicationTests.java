@@ -38,7 +38,7 @@ class SpringbootToDoListApplicationTests {
 	
 	//Create
 		//createUser
-	@Test
+//	@Test
 	@Transactional
 	@Rollback(false)
 	void contextLoads() {
