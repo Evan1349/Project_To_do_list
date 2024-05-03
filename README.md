@@ -5,4 +5,4 @@
 5. 每日排程與寄信提醒功能。
 
 ![1712828804605](https://github.com/Evan1349/Project_To_do_list/assets/94741456/128c0ca8-6acd-4218-b568-838cd566a7d4)
-https://www.cakeresume.com/portfolios/project-to-do-list
+**完整介紹:**  https://www.cakeresume.com/portfolios/project-to-do-list
